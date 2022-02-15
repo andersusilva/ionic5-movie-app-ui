@@ -1,0 +1,87 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="end" name="grid-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="start" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+
+  <ion-segment scrollable value="1">
+    <ion-segment-button value="1">
+      <ion-label>Filmes Populares</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Populares</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-label>Infantil</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      <ion-label>Adultos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="ion-padding">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <ion-badge color="light">Ação</ion-badge>
+        </ion-col>
+        <ion-col size="3">
+          <ion-badge color="light">Aventura</ion-badge>
+        </ion-col>
+        <ion-col size="3">
+          <ion-badge color="light">Terror</ion-badge>
+        </ion-col>
+        <ion-col size="3">
+          <ion-badge color="light">Drama</ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <ion-slides [options]="options">
+    
+    <ion-slide *ngFor="let movie of moviesPopulars">
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="poster-col">
+            <img class="poster" [src]="imgPath+movie.poster_path" alt="">
+          </ion-col>
+          <ion-col size="12">
+            <h5 class="ion-no-margin">{{movie.title}}</h5>
+            <p class="ion-no-margin rate">
+              <ion-icon name="star"></ion-icon> {{movie.vote_average}}
+            </p>
+            <p class="ion-no-margin date">
+              <ion-icon name="calendar"></ion-icon> {{movie.release_date | date:'dd/MM/yyyy'}}
+            </p>
+            <p class="ion-no-margin view">
+              <ion-icon name="eye"></ion-icon> {{movie.popularity}}
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+    </ion-slide>
+    
+  </ion-slides>
+
+  
+</ion-content>
